@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 type Node struct {
-	Data int
+	Data string
 	Next *Node
 }
 
@@ -11,7 +11,7 @@ type Stack struct {
 	Top *Node
 }
 
-func (s *Stack) Push(data int) {
+func (s *Stack) Push(data string) {
 	newNode := Node{data, nil}
 
 	if s.Top == nil {
@@ -22,30 +22,42 @@ func (s *Stack) Push(data int) {
 	}
 }
 
-func (s *Stack) Pop() {
+func (s *Stack) Pop() string {
 	if s.Top == nil {
-		return
+		return ""
 	}
 
+	poppedItem := s.Top
 	s.Top = s.Top.Next
+
+	return poppedItem.Data
 }
 
-func (s *Stack) Peek() int {
+func (s *Stack) Peek() string {
 	if s.Top == nil {
-		return -1
+		return ""
 	}
 
 	return s.Top.Data
 }
 
+func (s *Stack) isEmpty() bool {
+	return s.Top == nil
+}
+
 func main() {
 	stack := Stack{}
+	strToReverse := "Hello, world!"
 
-	for i := range 5 {
-		stack.Push(i)
+	result := ""
+
+	for i := 0; i < len(strToReverse); i++ {
+		stack.Push(string(strToReverse[i]))
 	}
 
-	stack.Pop()
+	for stack.Top != nil {
+		result += stack.Pop()
+	}
 
-	fmt.Println(stack.Peek())
+	fmt.Println(result)
 }

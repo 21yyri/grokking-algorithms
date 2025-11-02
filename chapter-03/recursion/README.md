@@ -3,3 +3,6 @@ Recursion is a method of solving a problem resorting on small solutions to small
 
 ## Imlementation
 The function usually starts with it's base cases, which define the stop point. After that, there is the process for other types of input.
+
+## Example
+I made [this example](https://github.com/21yyri/dead-url-scraper) which uses concurrent recursion to verify dead links. Check it out.
