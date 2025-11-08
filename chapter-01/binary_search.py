@@ -1,14 +1,14 @@
 def search(array: list[int], target: int) -> int | None:
-    low, high = 0, len(array) - 1
-    while low <= high:
-        half = (low + high) // 2
+    start, end = 0, len(array) - 1
+    while start <= end:
+        half = (start + end) // 2
         if array[half] == target:
             return half
 
         if array[half] > target:
-            high = half - 1
+            end = half - 1
         else:
-            low = half + 1
+            start = half + 1
     
     return None
 
